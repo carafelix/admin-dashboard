@@ -1,4 +1,4 @@
-# admin-dashboard [![Build Status]()]()}
+# admin-dashboard [![Build Status]()]()
 
 The best project ever.
 
