@@ -4,29 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gabarito">
+    <link rel="stylesheet" href="./out/css/normalize.css">
+    <link rel="stylesheet" href="./out/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <div class="wrapper">
+    <div id="universe-wrap" class="wrapper">
         <nav id="sidebar">
-            <div class="brand"></div>
-                li.tabs*9>img
+            <div class="brand tabs">
+                <img src="./assets/labyrinht.svg" alt="logo" class="logo">
+                <h2>Dashboard</h1>
+            </div>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">home</span>
+                    <p>Home</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">badge</span>
+                    <p>Profile</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">chat</span>
+                    <p>Messages</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">history</span>
+                    <p>History</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">timeline</span>
+                    <p>Timeline</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">groups</span>
+                    <p>Community</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">settings</span>
+                    <p>Settings</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">help</span>
+                    <p>Support</p>
+                </li>
+                <li class="tabs">
+                    <span class="material-symbols-rounded">security</span>
+                    <p>Privacy</p>
+                </li>
         </nav>
-        <header>
-            <div id="topnav">
-                <div class="search"></div>
-                <div class="settings"></div>
-            </div>
-            <div class="welcome">
-                <div class="actions"></div>
-            </div>
-        </header>
-        <main>
-            <div id="projects-wrap" class="maingrid">
-                .projects*6>ifr+div>img*3
-            </div>
-            #announcements>div*3>h3+p
-            #trending>div*4
-        </main>
+        <div id="main-wrap" class="wrapper">
+            <header>
+                <div id="topnav">
+                    <div class="search">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="search" name="search-bar" id="search-bar">
+                        <span class="material-symbols-rounded no-fill push-right">notifications_active</span>
+                        <span class="profile-icon"></span>
+                        <span class="profile-name right-margin-top">Mengano Fulano</span>
+                    </div>
+                    <div class="settings"></div>
+                </div>
+                <div class="welcome">
+                    <div class="actions"></div>
+                </div>
+            </header>
+            <main>
+                <div id="projects-wrap" class="maingrid">
+                    .projects*6>ifr+div>img*3
+                </div>
+                #announcements>div*3>h3+p
+                #trending>div*4
+            </main>
+        </div>    
     </div>
 </body>
 </html>
+
