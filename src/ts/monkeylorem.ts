@@ -158,20 +158,33 @@ const auxiliaryVerbs = [
   ];
 
   const punctuation = [
-    ".", ",", "!", "?", ":", ";",
+    ".", ",", "!", "?",
   ];
   
 
   const polis = [legends, locations, adjectives, actions, monkeys, connectors, grammaticalWords, auxiliaryVerbs, punctuation]
 
   export function monkeyLorem(neededCharLength:number){
-    let string = '';
-    while(string.length < neededCharLength){
+    let str = '';
+    while(str.length < neededCharLength){
         const arr = polis[randomLength(polis)];
-        const word = arr[randomLength(arr)]
-        string = string + word + ' '
+        const word = arr[randomLength(arr)];
+
+        if(arr === punctuation){
+            const tempStr = str.split('')
+            tempStr.pop();
+            if(punctuation.includes(tempStr[tempStr.length-1])){
+                continue
+            }
+            str = tempStr.join('') + word + ' '
+        } else {
+            str = str + word + ' '
+        }
     }
-    return string
+    const strArr = str.split('')
+    strArr[0] = strArr[0].toUpperCase();
+    strArr.pop();
+    return strArr.join('')
   }
 
   function randomLength(arr : string[] | Array<string[]>){
