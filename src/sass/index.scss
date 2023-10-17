@@ -133,7 +133,7 @@ li.tabs{
     input[type="button"]{
         width: 100px;
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 12px;
         background-color: #1ed760;
         border: none;
         cursor: pointer;
@@ -362,6 +362,7 @@ li.tabs{
     }
 
     .open-sidebar{
+        color:#000;
         display: block;
         position: absolute;
         background-color: #1ed760;
