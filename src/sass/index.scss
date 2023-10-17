@@ -1,38 +1,87 @@
 html, #universe-wrap{
     height: 100vh;
     font-family: 'Gabarito' , Roboto, Oxygen, Ubuntu, Cantarell, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    background-color: #000;
 }
 
-// Structure
-
-.wrapper{
-    display: grid;
-}
+// Universe Layout
 
 #universe-wrap{
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 4fr 22fr;
 }
 
 #main-wrap{
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 200px auto;
 }
 
-.tabs, .search{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+// Supra
+
+.wrapper{
+    display: grid;
 }
 
 h2{
     letter-spacing: 2px;
 }
 
+// Header and Sidebar
+
+.open-sidebar{
+    display: none;
+}
+
+header{
+    padding-left: 30px;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.529);
+    background-color: #000;
+    color: #fff;
+}
+
+#sidebar{
+    background-color: #000;
+    a:focus{
+       color: #1ed760; 
+    }
+}
+
+.tabs, .search, #topnav, .settings{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+li.tabs{
+    width: fit-content;
+}
+
+.settings, .search{
+    gap: 2rem;
+}
+
+.brand{
+    gap: 0;
+    padding: 10px;
+}
+
 .logo{
     width: 40px;
+    margin-right: 1rem;
 }
 
 #topnav{
-    margin-top: 15px;
+    padding: 20px;
+    align-items: center;
+}
+
+.search{
+    flex-grow: 1;
+    justify-content: center;
 }
 
 #search-bar{
@@ -48,15 +97,140 @@ h2{
 }
 
 .profile-icon{
-    width: 40px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 100%;
+    width: 50px;
     flex-shrink: 0;
 }
 
+.big-profile{
+    width: 80px;
+    height: 80px;
+}
 
-// margins 
+.welcome-area{
+    display: flex;
+    align-items: center;
+}
+
+.user-welcome{
+    display: flex;
+    gap: 2rem;
+
+        p {
+            margin-bottom: 0px;
+        }
+
+        h2 {
+            margin-top: 0px;
+        }
+}
+
+.actions{
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+    gap: 1.125rem;
+    width: 27%;   
+    input[type="button"]{
+        width: 100px;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: #1ed760;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+
+.me{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#github{
+    width: 40px;
+}
+
+.push-down{
+    position: absolute;
+    bottom: 10px;
+}
+
+
+
+// Main 
+
+main{
+    display: grid;
+    grid-template-columns: 8fr 3fr;
+    padding-left: 1rem;
+    gap: 4rem;
+    #center-main{
+        background-color: hsl(0, 0%, 6%);
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+        height: fit-content;
+    }
+
+}
+
+#projects-wrap{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+
+
+    .img-div{
+        width: fit-content;
+        border-radius: 15%;
+    }
+    .monkey-img{
+        width: 200px;
+        height: 200px;
+    }
+
+    h2{
+        grid-row-start: 0;
+    }
+}
+
+#side-main{
+    .side-wrap{
+        padding: 20px 2rem;
+        background-color: hsl(0, 0%, 6%);
+        margin-bottom: 1rem;
+
+        h2{
+            margin-top: 0px;
+        }
+
+        #announcements{
+            display: grid;
+            gap: 1rem;
+        }
+        #trends{
+            .trend{
+                display: grid;
+                grid-template-columns: 75px 1fr;
+                margin-bottom: 1.125rem;
+                .text{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+                    position: relative;
+                    bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+
+// margins
 
 
 #sidebar>*{
@@ -68,15 +242,37 @@ h2{
 }
 
 .right-margin{
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .right-margin-top{
-    margin-right: 100px;
+    margin-right: clamp(20px,10vh,100px)
 }
 
 .push-right{
     margin-left: auto;
+}
+
+ul{
+    margin-right: 1.5rem;
+    padding: 20px;
+    background-color: hsl(0, 0%, 6%);
+}
+
+
+
+// give and take
+
+.radius{
+    border-radius: 12px;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.reverse{
+    color: hsl(0, 0%, 6%);
 }
 
 
@@ -88,7 +284,9 @@ h2{
     'FILL' 1,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
+
+    cursor: pointer;
   }
 
 .no-fill{
@@ -96,3 +294,108 @@ h2{
     'FILL' 0,
 }
 
+// pointer
+
+li.tabs{
+    cursor: pointer;
+}
+
+
+
+// skeleton
+
+.skeleton {
+    animation: skeleton-loading 1.35s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite alternate;
+    content: "";
+    border: none !important;
+  }
+  
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(0, 0%, 22%);
+    }
+    100% {
+      background-color: hsl(0, 0%, 14%);
+    }
+  }
+  
+  .skeleton-base{
+    height: 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .skeleton-p {
+    width: 180px;
+    
+  }
+
+  h3.skeleton{
+    width: 220px;
+    height: 1rem;
+  }
+
+  .skeleton-user{
+    width: 100px;
+  }
+
+  .skeleton.icon-container{
+        width: fit-content;
+        height: 50px;
+        border-radius: 50%;
+  }
+
+
+@media (max-width: 900px) {
+
+    #universe-wrap{
+        grid-template-columns: auto;
+    }
+
+    main{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    #sidebar{
+        display: none;
+        position: absolute;
+    }
+
+    .open-sidebar{
+        display: block;
+        position: absolute;
+        background-color: #1ed760;
+        border-radius: 2px;
+        top: 1.7rem;
+        left: 15px;
+        span.material-symbols-rounded{
+            font-size: 2.5rem;
+        }
+    }
+
+    #sidebar.show-abs{
+        display: block;
+    }
+}
+
+@media (max-width:680px) {
+
+    #topnav{
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .settings{
+        justify-content: center;
+    }
+
+   .user-welcome{
+    display: none;
+   }
+   .welcome-area{
+    justify-content: center;
+   }
+   .actions{
+    margin-left: 0;
+   }
+}
