@@ -1,1 +1,5 @@
-const hi = 'hi';
+import { monkeyLorem } from './monkeylorem'
+
+
+
+console.log(monkeyLorem(2000));

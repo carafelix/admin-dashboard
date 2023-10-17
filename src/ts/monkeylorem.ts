@@ -164,7 +164,7 @@ const auxiliaryVerbs = [
 
   const polis = [legends, locations, adjectives, actions, monkeys, connectors, grammaticalWords, auxiliaryVerbs, punctuation]
 
-  function monkeyLorem(neededCharLength:number){
+  export function monkeyLorem(neededCharLength:number){
     let string = '';
     while(string.length < neededCharLength){
         const arr = polis[randomLength(polis)];
