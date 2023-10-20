@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gabarito">
     <link rel="stylesheet" href="./out/css/normalize.css">
     <link rel="stylesheet" href="./out/css/index.css">
+    <link rel="shortcut icon" href="./assets/cofi.ico" type="image/x-icon">
+    <script type="module" src="./out/js/index.js" defer></script>
 </head>
 <body>
     <div id="universe-wrap" class="wrapper">
@@ -111,7 +113,7 @@
                     <div class="user-welcome">      
                         <img src="./assets/profiles/dino.webp" class="big-profile"></img>
                         <span class="hi-there">
-                            <p>Hi there, Ape</p>
+                            <p>Hi Ape,</p>
                             <h2>Mengano Fulano</h2>
                         </span>
                     </div>
@@ -129,15 +131,21 @@
                     <h2>Projects</h2>
 
                     <div id="projects-wrap" class="maingrid container radius">
-                        <template id="card-template">
+                        <template id="skeleton-card-template">
                             <div class="project loading">
     
                                     <div class="skeleton img-div">
                                         <img class="monkey-img hide" alt="">
                                     </div>
-                                    <h3 class="skeleton skeleton-base"></h3>
+                                    <h3 class="skeleton skeleton-base project-h3"></h3>
                                     <div class="skeleton skeleton-p skeleton-base"></div>
                                     <div class="skeleton skeleton-p skeleton-base"></div>
+                            </div>
+                        </template>
+                        <template id="project-card-template">
+                            <div class="true-project display-none radius">
+                                <h3 class="project-h3"></h3>
+                                <p class="project-p"></p>
                             </div>
                         </template>
                     </div>
@@ -149,7 +157,7 @@
                     <div class="side-wrap radius">
                         <h2>Announcements</h2>
                         <div id="announcements" class="right-margin">
-                            <template id="announcements-template">
+                            <template id="skeleton-announcements-template">
                                 <div class="announcement loading">
                                     <h3 class="skeleton skeleton-base"></h3>
                                     <div class="skeleton skeleton-p skeleton-base"></div>
