@@ -1,11 +1,14 @@
 import { monkeyLorem, addPoint, fileNames} from './monkeylorem.js'
 
 const projects = document.querySelectorAll('.project') as NodeListOf<HTMLDivElement>;
+const announs = document.querySelectorAll('.announcement') as NodeListOf<HTMLDivElement>;
+const trending = document.querySelectorAll('.trend') as NodeListOf<HTMLDivElement>;
 
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement
 
 
-async function skeletonJazz(){
+async function skeletonProjectsJazz(){
+
     let visitedMonkeys : string[] = []
 
 
@@ -22,7 +25,9 @@ async function skeletonJazz(){
             p.textContent = addPoint(monkeyLorem(85))
         }
 
-
+        
+        console.log(project.nextElementSibling)
+        
         const monkeyImg = document.createElement('img');
 
         const currentMonkey = getCurrentMonkey(fileNames,visitedMonkeys)
@@ -30,6 +35,7 @@ async function skeletonJazz(){
         monkeyImg.setAttribute('src' , `./assets/dall-e/webp/${currentMonkey}`);
         monkeyImg.setAttribute('alt' , `Primate art`);
         monkeyImg.classList.add('monkey-img');
+
         cardDiv?.classList.add('display-none');
 
 
@@ -46,13 +52,13 @@ async function skeletonJazz(){
         if(h3){
             cardDiv?.insertBefore(monkeyImg,h3);
         }
-        
-
-
     }
 }
 
-skeletonJazz();
+skeletonProjectsJazz();
+
+
+
 
 function getRandomItem(arr:string[]){
     return arr[Math.floor(Math.random()*arr.length)]
