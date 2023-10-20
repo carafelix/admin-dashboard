@@ -4,8 +4,6 @@ const projects = document.querySelectorAll('.project') as NodeListOf<HTMLDivElem
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement
 
 
-
-
 async function skeletonJazz(){
 
     const fileNames = await fetch('./fileNames.json')

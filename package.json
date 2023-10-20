@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "tsc": "tsc -p ./ -w",
+    "sass": "sass --watch src/sass:out/css",
+    "watch": "concurrently \"npm run tsc\" \"npm run sass\"",
+    "build": "esbuild ./src/ts/index.ts --bundle --outfile=build/index.js"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.19.5"
+  }
+}

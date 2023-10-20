@@ -7,9 +7,6 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
 # Runtime data
 pids
 *.pid
@@ -132,9 +129,9 @@ dist
 /.vscode
 node_modules
 package-lock.json
-package.json
 
 *.map
-index.css
-index.js
+
+*.css
+*.js
 /assets
