@@ -1,4 +1,5 @@
-import { monkeyLorem, addPoint } from './monkeylorem.js'
+import { monkeyLorem, addPoint, fileNames} from './monkeylorem.js'
+
 const projects = document.querySelectorAll('.project') as NodeListOf<HTMLDivElement>;
 
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement
@@ -6,9 +7,7 @@ const cardTemplate = document.getElementById("project-card-template") as HTMLTem
 
 async function skeletonJazz(){
 
-    const fileNames = await fetch('./fileNames.json')
-                                .then((response)=>response.json())
-                                .then((data)=>data.filenames);
+    console.log(fileNames)
 
 
     let visitedMonkeys : string[] = []

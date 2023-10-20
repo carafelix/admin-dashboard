@@ -157,9 +157,49 @@ const auxiliaryVerbs = [
     "mythical saga", "folklore of old", "mythopoeic tale", "ageless legend", "mythopoeic yarn",
   ];
 
-  const punctuation = [
-    ".", ",", "!", "?",
-  ];
+  export const fileNames = [
+    "0_gorilla_face_close-up.png",
+    "1_gorilla_face_close-up.png",
+    "2_gorilla_face_close-up.png",
+    "3_gorilla_face_close-up.png",
+    "4_crab-eating_macaque_face_close-up.png",
+    "5_crab-eating_macaque_face_close-up.png",
+    "6_crab-eating_macaque_face_close-up.png",
+    "7_crab-eating_macaque_face_close-up.png",
+    "8_crab-eating_macaque_face_close-up.png",
+    "9_crab-eating_macaque_face_close-up.png",
+    "10_crab-eating_macaque_face_close-up.png",
+    "11_crab-eating_macaque_face_close-up.png",
+    "12_mandrill_face_close-up.png",
+    "13_red-eared_guenon_face_close-up.png",
+    "14_red-eared_guenon_face_close-up.png",
+    "15_red-eared_guenon_face_close-up.png",
+    "16_red-eared_guenon_face_close-up.png",
+    "17_red-shanked_douc_face_close-up.png",
+    "18_red-shanked_douc_face_close-up.png",
+    "19_red-shanked_douc_face_close-up.png",
+    "20_japanese_macaque_face_close-up.png",
+    "21_japanese_macaque_face_close-up.png",
+    "22_japanese_macaque_face_close-up.png",
+    "23_japanese_macaque_face_close-up.png",
+    "24_de_brazza's_monkey_face_close-up.png",
+    "25_de_brazza's_monkey_face_close-up.png",
+    "26_de_brazza's_monkey_face_close-up.png",
+    "27_de_brazza's_monkey_face_close-up.png",
+    "28_golden_snob-nosed_monkey_face_close-up.png",
+    "29_golden_snob-nosed_monkey_face_close-up.png",
+    "30_golden_snob-nosed_monkey_face_close-up.png",
+    "31_golden_snob-nosed_monkey_face_close-up.png",
+    "32_baboon_face_close-up.png",
+    "33_baboon_face_close-up.png",
+    "34_baboon_face_close-up.png",
+    "35_baboon_face_close-up.png",
+    "36_gibbon_face_close-up.png",
+    "37_baboon_face_close-up.png",
+    "38_baboon_face_close-up.png",
+    "39_baboon_face_close-up.png",
+    "40_baboon_face_close-up.png"
+  ]
   
 
   const polis = [legends, locations, adjectives, actions, monkeys, connectors, grammaticalWords, auxiliaryVerbs]
@@ -167,20 +207,13 @@ const auxiliaryVerbs = [
   export function monkeyLorem(neededCharLength:number){
     let str = '';
     while(str.length < neededCharLength){
+
         const arr = polis[randomLength(polis)];
         const word = arr[randomLength(arr)];
 
-        if(arr === punctuation){
-            const tempStr = str.split('')
-            tempStr.pop();
-            if(punctuation.includes(tempStr[tempStr.length-1])){
-                continue
-            }
-            str = tempStr.join('') + word + ' '
-        } else {
-            str = str + word + ' '
-        }
+        str = str + word + ' '
     }
+
     const strArr = str.split('')
     strArr[0] = strArr[0].toUpperCase();
     strArr.pop();
