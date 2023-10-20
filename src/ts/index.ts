@@ -6,14 +6,10 @@ const cardTemplate = document.getElementById("project-card-template") as HTMLTem
 
 
 async function skeletonJazz(){
-
-    console.log(fileNames)
-
-
     let visitedMonkeys : string[] = []
 
 
-    for(const project of projects){
+    for(const project of projects){  // this loop needs to be changed to a linked list sort of thing, to travers the loading of images from left to right and top to bottom
         project.append(cardTemplate.content.cloneNode(true));
         
         const cardDiv = project.lastElementChild;
@@ -31,7 +27,7 @@ async function skeletonJazz(){
 
         const currentMonkey = getCurrentMonkey(fileNames,visitedMonkeys)
 
-        monkeyImg.setAttribute('src' , `./assets/dall-e/${currentMonkey}`);
+        monkeyImg.setAttribute('src' , `./assets/dall-e/webp/${currentMonkey}`);
         monkeyImg.setAttribute('alt' , `Primate art`);
         monkeyImg.classList.add('monkey-img');
         cardDiv?.classList.add('display-none');
@@ -51,6 +47,7 @@ async function skeletonJazz(){
             cardDiv?.insertBefore(monkeyImg,h3);
         }
         
+
 
     }
 }
