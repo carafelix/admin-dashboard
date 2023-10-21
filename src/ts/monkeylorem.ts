@@ -208,8 +208,8 @@ const auxiliaryVerbs = [
     let str = '';
     while(str.length < neededCharLength){
 
-        const arr = polis[randomLength(polis)];
-        const word = arr[randomLength(arr)];
+        const arr = polis[randomIndex(polis)];
+        const word = arr[randomIndex(arr)];
 
         str = str + word + ' '
     }
@@ -220,7 +220,12 @@ const auxiliaryVerbs = [
     return strArr.join('')
   }
 
-  function randomLength(arr : string[] | Array<string[]>){
+  export function getMonkeyUser(){
+    const monkey = monkeys[randomIndex(monkeys)];
+    return ('@' + monkey.split(' ').join('_'))
+  }
+
+  function randomIndex(arr : string[] | Array<string[]>){
     return Math.floor(Math.random()*arr.length)
   }
 

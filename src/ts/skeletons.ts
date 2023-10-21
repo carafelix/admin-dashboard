@@ -7,7 +7,7 @@ if(proyectsContainer && cardTemplate){
 }
 
 const anContainer = document.getElementById('announcements');
-const anTemplate = document.getElementById("skeleton-announcements-template") as HTMLTemplateElement;
+const anTemplate = document.getElementById("skeleton-announcement-template") as HTMLTemplateElement;
 
 if(anContainer && anTemplate){
   for (let i = 0; i < 3; i++) {
@@ -16,7 +16,7 @@ if(anContainer && anTemplate){
 }
 
 const trendContainer = document.getElementById('trends');
-const trendTemplate = document.getElementById("trends-template") as HTMLTemplateElement;
+const trendTemplate = document.getElementById("skeleton-trend-template") as HTMLTemplateElement;
 
 
 if(trendContainer && trendTemplate){

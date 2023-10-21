@@ -1,66 +1,96 @@
-import { monkeyLorem, addPoint, fileNames} from './monkeylorem.js'
+import { monkeyLorem, addPoint, fileNames, getMonkeyUser} from './monkeylorem.js'
 
 const projects = document.querySelectorAll('.project') as NodeListOf<HTMLDivElement>;
-const announs = document.querySelectorAll('.announcement') as NodeListOf<HTMLDivElement>;
+const announcements = document.querySelectorAll('.announcement') as NodeListOf<HTMLDivElement>;
 const trending = document.querySelectorAll('.trend') as NodeListOf<HTMLDivElement>;
 
-const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement
+const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement;
+const trendTemplate = document.getElementById("trend-template") as HTMLTemplateElement;
+
 
 let visitedMonkeys : string[] = []
 
 
-async function skeletonProjectsJazz(project:Element){
+async function skeletonJazz(element:HTMLDivElement){
 
-        if(!project){
+        if(!element){
             return
         }
-        project.append(cardTemplate.content.cloneNode(true));
-        
-        const cardDiv = project.lastElementChild;
-        const h3 = cardDiv?.firstElementChild;
+
+        const isProject = Array.from(projects).includes(element);
+        const isAnnouncement = Array.from(announcements).includes(element);
+        const isTrend = Array.from(trending).includes(element);
+
+        if(isProject || isAnnouncement){
+            element.append(cardTemplate.content.cloneNode(true));
+        } else if (isTrend){
+            element.append(trendTemplate.content.cloneNode(true));
+        }
+
+        const templateDiv = element.lastElementChild;
+        const h3 = templateDiv?.firstElementChild;
+        const p = templateDiv?.lastElementChild;
+
         if(h3){
-            h3.textContent = monkeyLorem(15)
+            if(isProject || isAnnouncement){
+                h3.textContent = monkeyLorem(15)
+            } else if (isTrend){ // in this case h3 is == to p === user_name
+                h3.textContent = getMonkeyUser();
+                console.log(h3)
+            }
         }
-        const p = cardDiv?.lastElementChild;
+
         if(p){
-            p.textContent = addPoint(monkeyLorem(85))
+            if(isProject){
+                p.textContent = addPoint(monkeyLorem(85))
+            } else if (isTrend){
+                p.textContent = addPoint(monkeyLorem(120))
+            } else if (isTrend){
+                p.textContent = addPoint(monkeyLorem(20))
+            }   
         }
-
-        
-        console.log(project.nextElementSibling)
-        
+        if(isProject){
+            
+        }
         const monkeyImg = document.createElement('img');
-
-        const currentMonkey = getCurrentMonkey(fileNames,visitedMonkeys)
-
-        monkeyImg.setAttribute('src' , `./assets/dall-e/webp/${currentMonkey}`);
-        monkeyImg.setAttribute('alt' , `Primate art`);
+        const currentMonkey = getCurrentMonkey(fileNames,visitedMonkeys);
+        monkeyImg.setAttribute('src' , `./assets/dall-e/webp/high/${currentMonkey}`)
+        monkeyImg.setAttribute('alt' , `Primate art`)
         monkeyImg.classList.add('monkey-img');
 
-        cardDiv?.classList.add('display-none');
+        templateDiv?.classList.add('display-none');
 
-
-        monkeyImg.addEventListener('load',()=>{
-            const skeletonSibilings = project.querySelectorAll('.skeleton');
-            skeletonSibilings.forEach((el)=>{
-                project.removeChild(el)
-            })
-
-            cardDiv?.classList.remove('display-none')
-            project.classList.remove('loading');
-
-            if(project.nextElementSibling){
-                skeletonProjectsJazz(project.nextElementSibling)
+        if(templateDiv && isProject){
+            removeSkeletonSibilings(monkeyImg, element,templateDiv as HTMLDivElement);
+            
+            if(h3){
+                templateDiv?.insertBefore(monkeyImg,h3);
             }
-        })
-
-        if(h3){
-            cardDiv?.insertBefore(monkeyImg,h3);
         }
 }
 
-skeletonProjectsJazz(projects[0]);
+skeletonJazz(projects[0]);
 
+
+function removeSkeletonSibilings(lastLoadedElement:HTMLElement, parent:HTMLDivElement, template:HTMLDivElement){
+
+    lastLoadedElement.addEventListener('load',()=>{
+        const skeletonSibilings = parent.querySelectorAll('.skeleton');
+        skeletonSibilings.forEach((el:Element)=>{
+            parent.removeChild(el)
+        })
+
+        template?.classList.remove('display-none')
+        parent.classList.remove('loading');
+
+        if(parent.nextElementSibling){
+            skeletonJazz(parent.nextElementSibling as HTMLDivElement)
+        }
+    })
+
+}
+
+// skeletonJazz(trending[0])
 
 
 
