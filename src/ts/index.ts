@@ -6,13 +6,14 @@ const trending = document.querySelectorAll('.trend') as NodeListOf<HTMLDivElemen
 
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement
 
-
-async function skeletonProjectsJazz(){
-
-    let visitedMonkeys : string[] = []
+let visitedMonkeys : string[] = []
 
 
-    for(const project of projects){  // this loop needs to be changed to a linked list sort of thing, to travers the loading of images from left to right and top to bottom
+async function skeletonProjectsJazz(project:Element){
+
+        if(!project){
+            return
+        }
         project.append(cardTemplate.content.cloneNode(true));
         
         const cardDiv = project.lastElementChild;
@@ -46,16 +47,19 @@ async function skeletonProjectsJazz(){
             })
 
             cardDiv?.classList.remove('display-none')
-            project.classList.remove('loading')
+            project.classList.remove('loading');
+
+            if(project.nextElementSibling){
+                skeletonProjectsJazz(project.nextElementSibling)
+            }
         })
 
         if(h3){
             cardDiv?.insertBefore(monkeyImg,h3);
         }
-    }
 }
 
-skeletonProjectsJazz();
+skeletonProjectsJazz(projects[0]);
 
 
 
