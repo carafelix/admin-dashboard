@@ -157,7 +157,7 @@ const auxiliaryVerbs = [
     "mythical saga", "folklore of old", "mythopoeic tale", "ageless legend", "mythopoeic yarn",
   ];
 
-  export const fileNames = [
+  export const monkeyFileNames = [
     "0_gorilla_face_close-up.webp",
     "1_gorilla_face_close-up.webp",
     "2_gorilla_face_close-up.webp",
@@ -201,6 +201,19 @@ const auxiliaryVerbs = [
     "40_baboon_face_close-up.webp"
   ]
   
+  export const profileNames = [
+    "cloud.webp",
+    "coffee.webp",
+    "ghosti.webp",
+    "gladi.webp",
+    "littleguy.webp",
+    "oldfart.webp",
+    "poop.webp",
+    "rabbit.webp",
+    "sheep.webp",
+    "tamper.webp",
+    "zombie.webp"
+  ]
 
   const polis = [legends, locations, adjectives, actions, monkeys, connectors, grammaticalWords, auxiliaryVerbs]
 

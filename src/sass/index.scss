@@ -79,6 +79,9 @@ li.tabs{
 #topnav{
     padding: 20px;
     align-items: center;
+    .material-symbols-rounded:hover, .profile-name:hover{
+        color: #1ed760;
+        }
 }
 
 .search{
@@ -139,6 +142,9 @@ li.tabs{
         background-color: #1ed760;
         border: none;
         cursor: pointer;
+    }
+    input[type="button"]:hover{
+        color: #fafafa;
     }
 }
 
@@ -231,19 +237,31 @@ main{
         #announcements{
             display: grid;
             gap: 1rem;
+            .announcement{
+                background-color: #242424;
+                border-radius: 5%;
+                padding: 0 10%;
+                margin-bottom: 5%;
+            }
         }
         #trends{
             .trend{
                 display: grid;
                 grid-template-columns: 75px 1fr;
                 margin-bottom: 1.125rem;
+                align-items: center;
                 .text{
                     display: flex;
                     flex-direction: column;
                     justify-content: end;
                     position: relative;
                     bottom: 5px;
+                    
                 }
+                .text.skeleton{
+                    animation: none;
+                }
+                
             }
         }
     }
@@ -267,7 +285,7 @@ main{
 }
 
 .right-margin-top{
-    margin-right: clamp(20px,10vh,100px)
+    margin-right: clamp(20px,5vw,100px)
 }
 
 .push-right{
@@ -297,7 +315,7 @@ ul{
 }
 
 .display-none{
-    display: none;
+    display: none !important;
 }
 
 
@@ -371,7 +389,7 @@ li.tabs{
   }
 
 
-@media (max-width: 900px) {
+@media (max-width: 920px) {
 
     #universe-wrap{
         grid-template-columns: auto;
