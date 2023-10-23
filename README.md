@@ -9,6 +9,8 @@
 
 - Responsive
 - Skeletons that are independent from each other, content is displayed secuentialy
+- Custom Monkey related Lorem Ipsum
+- New text and imgs each load
 - Primates
 
 ![](./assets/gif/skeletons.gif)
