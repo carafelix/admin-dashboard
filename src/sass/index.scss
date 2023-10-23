@@ -323,6 +323,9 @@ ul{
 .hide{
     visibility: hidden;
 }
+.transparent{
+    opacity: 0;
+}
 
 .reverse{
     color: hsl(0, 0%, 6%);

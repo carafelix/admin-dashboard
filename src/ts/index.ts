@@ -6,6 +6,8 @@ const trending = document.querySelectorAll('.trend') as NodeListOf<HTMLDivElemen
 
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement;
 const trendTemplate = document.getElementById("trend-template") as HTMLTemplateElement;
+const anTemplate = document.getElementById("an-card-template") as HTMLTemplateElement;
+
 
 
 let visitedMonkeys : string[] = []
@@ -22,8 +24,10 @@ async function skeletonJazz(parentElement:HTMLDivElement){
         const isAnnouncement = Array.from(announcements).includes(parentElement);
         const isTrend = Array.from(trending).includes(parentElement);
 
-        if(isProject || isAnnouncement){
+        if(isProject){
             parentElement.append(cardTemplate.content.cloneNode(true));
+        } else if(isAnnouncement){
+            parentElement.append(anTemplate.content.cloneNode(true));
         } else if (isTrend){
             parentElement.append(trendTemplate.content.cloneNode(true));
         }
@@ -52,25 +56,35 @@ async function skeletonJazz(parentElement:HTMLDivElement){
 
         if(isProject){
 
-            const monkeyImg = populateImg(monkeyFileNames, visitedMonkeys, './assets/dall-e/webp/high/', 'Primate art', 'monkey-img', false, false)
+            const monkeyImg = populateImg(monkeyFileNames, visitedMonkeys, './assets/dall-e/webp/high/', 'monkey-img', 'Primate art')
 
             if(trueItemDivFromTemplate){
-                removeAlreadyLoadedSkeletons(parentElement) // this need to be changed
-                callNextSibiling(parentElement)
+                monkeyImg.onload = (ev)=>{
+                    parentElement.querySelectorAll('.skeleton').forEach(skeleton=>{
+                        parentElement.removeChild(skeleton)
+                    })
+                    if(parentElement.lastElementChild){
+                        parentElement.lastElementChild.classList.remove('absolute')
+                        parentElement.lastElementChild.classList.remove('display-none')
+                    }
+                }
+                callNextParentSibiling(parentElement)
             }
             if(h3){
                 trueItemDivFromTemplate?.insertBefore(monkeyImg,h3);
             }
         } else if (isAnnouncement){
-                removeAlreadyLoadedSkeletons(parentElement)
-                callNextSibiling(parentElement);
+                removeSkeletonsInsant(parentElement)
+                callNextParentSibiling(parentElement);
 
         } else if (isTrend){
 
-            const currentProfile = populateImg(profileNames, visitedProfiles, './assets/profiles/', 'Profile Icon', 'profile-icon', true);
-                removeSkeletonsOnLoad(currentProfile, parentElement, '.trend-div');
-                parentElement.insertBefore(currentProfile, parentElement.firstElementChild)
-                callNextSibiling(parentElement);
+            const profileImg = populateImg(profileNames, visitedProfiles, './assets/profiles/', 'profile-icon', 'Profile Icon', true,true);
+                removeSkeletonSibilingsOnLoad(profileImg, parentElement, '.trend-div');
+                removeHide(profileImg, parentElement.lastElementChild as HTMLElement, true)
+                removeHide(profileImg, profileImg, true)
+                parentElement.insertBefore(profileImg, parentElement.firstElementChild)
+                callNextParentSibiling(parentElement);
                 
         }
 }
@@ -79,7 +93,7 @@ skeletonJazz(projects[0]);
 skeletonJazz(announcements[0]);
 skeletonJazz(trending[0])
 
-function populateImg(sourceNameList:string[], visited:string[], dir:string, alt:string, imgClass:string, absolute?:boolean, hide?:boolean){
+function populateImg(sourceNameList:string[], visited:string[], dir:string, imgClass:string, alt:string, absolute?:boolean, transparent?:boolean, none?:boolean){
     const img = document.createElement('img');
     const current = getCurrentMonkey(sourceNameList, visited);
     const path = dir + current
@@ -89,32 +103,45 @@ function populateImg(sourceNameList:string[], visited:string[], dir:string, alt:
     if(absolute){
         img.classList.add('absolute')
     }
-    if(hide){
-        img.classList.add('hide')
-
+    if(transparent){
+        img.classList.add('transparent')
+    } if(none){
+        img.classList.add('display-none')
     }
-
     return img
 }
 
 
-function removeSkeletonsOnLoad(lastLoadedElement:HTMLElement, parent:HTMLElement, selector : string){
+function removeSkeletonSibilingsOnLoad(lastLoadedElement:HTMLImageElement, parent:HTMLElement, selector : string){
 
     lastLoadedElement.addEventListener('load',()=>{
-        const skeletonSibilings = parent.querySelectorAll(selector);
-        skeletonSibilings.forEach((el:Element)=>{
-            parent.removeChild(el)
-        });
-
-        lastLoadedElement.classList.remove('absolute')
-        parent.querySelectorAll('.true-trend').forEach((el:Element)=>{
-            el.classList.remove('display-none')
-        });
+        if(lastLoadedElement.complete){
+            console.log(lastLoadedElement.complete)
+            const skeletonSibilings = parent.querySelectorAll(selector);
+            skeletonSibilings.forEach((el:Element)=>{
+                parent.removeChild(el)
+            });
+        }
     })
-
 }
 
-function removeAlreadyLoadedSkeletons(parent:HTMLDivElement){
+function removeHide(loadedElement:HTMLElement, elementToShow:HTMLElement, onload?: boolean){
+    if(onload){
+        loadedElement.addEventListener('load', ()=>{
+            elementToShow.classList.remove('absolute')
+            elementToShow.classList.remove('transparent')
+            elementToShow.classList.remove('hide')
+            elementToShow.classList.remove('display-none')
+        })
+    } else{
+        elementToShow.classList.remove('absolute')
+        elementToShow.classList.remove('transparent')
+        elementToShow.classList.remove('hide')
+        elementToShow.classList.remove('display-none')
+    }
+}
+
+function removeSkeletonsInsant(parent:HTMLDivElement){
     const skeletonSibilings = parent.querySelectorAll('.skeleton');
     skeletonSibilings.forEach((el:Element)=>{
         parent.removeChild(el)
@@ -122,7 +149,7 @@ function removeAlreadyLoadedSkeletons(parent:HTMLDivElement){
 }
 
 
-function callNextSibiling(parent:HTMLDivElement){
+function callNextParentSibiling(parent:HTMLDivElement){
     if(parent.nextElementSibling){
         skeletonJazz(parent.nextElementSibling as HTMLDivElement)
     }
