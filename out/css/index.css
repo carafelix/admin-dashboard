@@ -542,6 +542,9 @@ main #center-main {
   padding: 0 10%;
   margin-bottom: 5%;
 }
+#side-main .side-wrap #announcements .announcement.loading {
+  background-color: inherit;
+}
 #side-main .side-wrap #trends {
   display: grid;
 }

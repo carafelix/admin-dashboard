@@ -142,6 +142,7 @@ function removeSkeletonsInsant(parent) {
     skeletonSibilings.forEach((el) => {
         parent.removeChild(el);
     });
+    parent.classList.remove('loading');
 }
 function callNextParentSibiling(parent) {
     if (parent.nextElementSibling) {
