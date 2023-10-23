@@ -178,3 +178,15 @@ function getCurrentMonkey(filenames: string[] , visited: string[]){
     }
 
 }
+
+const openSideButton = document.getElementById('open-sidenav');
+const sidebar = document.getElementById('sidebar')
+
+openSideButton?.addEventListener('click',(ev)=>{
+    
+    if(sidebar?.classList.contains('display')){
+        sidebar?.classList.remove('display')
+    } else{
+        sidebar?.classList.add('display')
+    }
+})
