@@ -22,7 +22,3 @@ Proyect assignment from [The Odin Proyect](https://www.theodinproject.com/lesson
 ## License
 Copyright (c) 2023 carafelix  
 Licensed under the MIT license.
-
-### to-do
-
-- transform for loop into a linked list traversal for project painting
