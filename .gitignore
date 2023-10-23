@@ -131,6 +131,3 @@ node_modules
 package-lock.json
 
 *.map
-
-*.css
-*.js
