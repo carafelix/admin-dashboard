@@ -148,6 +148,8 @@ function removeSkeletonsInsant(parent:HTMLDivElement){
     skeletonSibilings.forEach((el:Element)=>{
         parent.removeChild(el)
     })
+    parent.classList.remove('loading')
+
 }
 
 
