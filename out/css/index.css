@@ -455,6 +455,7 @@ li.tabs {
   background-color: #1ed760;
   border: none;
   cursor: pointer;
+  color: #000;
 }
 .actions input[type=button]:hover {
   color: #fafafa;
