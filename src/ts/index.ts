@@ -59,7 +59,7 @@ async function skeletonJazz(parentElement:HTMLDivElement){
             const monkeyImg = populateImg(monkeyFileNames, visitedMonkeys, './assets/dall-e/webp/high/', 'monkey-img', 'Primate art')
 
             if(trueItemDivFromTemplate){
-                monkeyImg.onload = (ev)=>{
+                monkeyImg.onload = ()=>{
                     parentElement.querySelectorAll('.skeleton').forEach(skeleton=>{
                         parentElement.removeChild(skeleton)
                     })
@@ -184,11 +184,18 @@ function getCurrentMonkey(filenames: string[] , visited: string[]){
 const openSideButton = document.getElementById('open-sidenav');
 const sidebar = document.getElementById('sidebar')
 
-openSideButton?.addEventListener('click',(ev)=>{
+openSideButton?.addEventListener('click',()=>{
     
     if(sidebar?.classList.contains('display')){
         sidebar?.classList.remove('display')
     } else{
         sidebar?.classList.add('display')
     }
+})
+
+const tabs = document.querySelectorAll('.tabs')
+tabs.forEach((t)=>{
+    t.addEventListener('click', ()=>{
+        sidebar?.classList.remove('display')
+    })
 })
