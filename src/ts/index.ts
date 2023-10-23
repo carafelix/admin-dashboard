@@ -66,6 +66,7 @@ async function skeletonJazz(parentElement:HTMLDivElement){
                     if(parentElement.lastElementChild){
                         parentElement.lastElementChild.classList.remove('absolute')
                         parentElement.lastElementChild.classList.remove('display-none')
+                        parentElement.classList.remove('loading')
                     }
                 }
                 callNextParentSibiling(parentElement)
@@ -121,6 +122,7 @@ function removeSkeletonSibilingsOnLoad(lastLoadedElement:HTMLImageElement, paren
             skeletonSibilings.forEach((el:Element)=>{
                 parent.removeChild(el)
             });
+            parent.classList.remove('loading')
         }
     })
 }

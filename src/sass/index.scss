@@ -222,6 +222,13 @@ main{
         background-color: #282828;
     }
 
+    .project{
+        order: 1;
+    }
+    .project.loading{
+        order:9;
+    }
+
 }
 
 #side-main{
