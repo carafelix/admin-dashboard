@@ -13,6 +13,8 @@
 - New text and imgs each load
 - Primates
 
+## Showcase 
+
 ![](./assets/gif/responsive.gif)
 
 Proyect assignment from [The Odin Proyect](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard)
