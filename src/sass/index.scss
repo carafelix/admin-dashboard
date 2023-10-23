@@ -258,11 +258,13 @@ main{
             }
         }
         #trends{
+            display: grid;
             .trend{
                 display: flex;
                 flex-direction: row;
                 margin-bottom: 1.125rem;
                 align-items: center;
+                order: 1;
                 .text{
                     display: flex;
                     flex-direction: column;
@@ -289,6 +291,9 @@ main{
                     position: relative;
                     top: 5px;
                 }
+            }
+            .trend.loading{
+                order: 4;
             }
         }
     }
