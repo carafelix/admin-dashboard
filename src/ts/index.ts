@@ -7,6 +7,7 @@ const trending = document.querySelectorAll('.trend') as NodeListOf<HTMLDivElemen
 const cardTemplate = document.getElementById("project-card-template") as HTMLTemplateElement;
 const trendTemplate = document.getElementById("trend-template") as HTMLTemplateElement;
 const anTemplate = document.getElementById("an-card-template") as HTMLTemplateElement;
+const mainWrap = document.getElementById("main-wrap") as HTMLDivElement;
 
 
 
@@ -187,8 +188,10 @@ const sidebar = document.getElementById('sidebar')
 openSideButton?.addEventListener('click',()=>{
     
     if(sidebar?.classList.contains('display')){
+        mainWrap?.classList.remove('display-none')
         sidebar?.classList.remove('display')
     } else{
+        mainWrap?.classList.add('display-none')
         sidebar?.classList.add('display')
     }
 })
@@ -197,5 +200,6 @@ const tabs = document.querySelectorAll('.tabs')
 tabs.forEach((t)=>{
     t.addEventListener('click', ()=>{
         sidebar?.classList.remove('display')
+        mainWrap?.classList.remove('display-none')
     })
 })
