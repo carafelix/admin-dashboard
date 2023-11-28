@@ -312,6 +312,7 @@ template {
 }
 
 html, #universe-wrap {
+  height: 100vh;
   height: 100svh;
   font-family: "Gabarito", Roboto, Oxygen, Ubuntu, Cantarell, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
   color: #fff;
@@ -696,6 +697,7 @@ h3.skeleton {
   }
   #sidebar {
     display: none;
+    height: 100vh;
     height: 100svh;
   }
   #sidebar.display {
